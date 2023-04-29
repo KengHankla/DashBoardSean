@@ -16,7 +16,15 @@ const HeaderLayout = (props: ITFProps) => {
     removeCookie("token");
   };
   return (
-    <Header style={{ padding: 0 }}>
+    <Header
+      style={{
+        padding: 0,
+        position: "sticky",
+        top: 0,
+        zIndex: 1,
+        width: "100%",
+      }}
+    >
       <Container>
         <Button
           type="text"

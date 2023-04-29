@@ -10,10 +10,15 @@ import { useCookies } from "react-cookie";
 import { useSelector } from "react-redux";
 import FadeIn from "react-fade-in";
 
-import HomePage from "pages/home/index";
-import LoginPage from "pages/login/index";
 import SiderLayout from "layout/sider/index";
 import HeaderLayout from "layout/header/index";
+import FooterLayout from "./layout/footer";
+import HomePage from "pages/home/index";
+import LoginPage from "pages/login/index";
+import RandomRewardPage from "pages/randomReward/index";
+import ClaimRewardPage from "pages/claimReward/index";
+import PageNotFound from "./pages/pageNotFound";
+
 import { commonSelector } from "./store/slice/common";
 const { Content } = Layout;
 
@@ -51,30 +56,40 @@ function App() {
       ) : (
         <Layout style={{ height: "100vh" }}>
           {isHaveTokenLogin ? (
-            <FadeIn>
-              <Layout hasSider>
-                <SiderLayout collapsed={collapsed} />
-                <Layout>
-                  <HeaderLayout
-                    collapsed={collapsed}
-                    setCollapsed={setCollapsed}
-                  />
-                  <Content
-                    style={{
-                      margin: "24px 16px",
-                      padding: 24,
-                      background: "pink",
-                    }}
-                  >
-                    <Router>
+            <Router>
+              <FadeIn>
+                <Layout hasSider>
+                  <SiderLayout collapsed={collapsed} />
+                  <Layout style={{ marginLeft: !collapsed ? 200 : 80 }}>
+                    <HeaderLayout
+                      collapsed={collapsed}
+                      setCollapsed={setCollapsed}
+                    />
+                    <Content
+                      style={{
+                        margin: "24px 16px 0px 16px",
+                        padding: 24,
+                        height: "84vh",
+                      }}
+                    >
                       <Switch>
-                        <Route path="/" component={HomePage}></Route>
+                        <Route exact path="/home" component={HomePage}></Route>
+                        <Route
+                          path="/random-reward"
+                          component={RandomRewardPage}
+                        ></Route>
+                        <Route
+                          path="/claim-reward"
+                          component={ClaimRewardPage}
+                        ></Route>
+                        <Route path="*" component={PageNotFound} />
                       </Switch>
-                    </Router>
-                  </Content>
+                    </Content>
+                    <FooterLayout />
+                  </Layout>
                 </Layout>
-              </Layout>
-            </FadeIn>
+              </FadeIn>
+            </Router>
           ) : (
             <Router>
               <Switch>
