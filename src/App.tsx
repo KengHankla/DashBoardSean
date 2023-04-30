@@ -10,16 +10,24 @@ import { useCookies } from "react-cookie";
 import { useSelector } from "react-redux";
 import FadeIn from "react-fade-in";
 
-import SiderLayout from "layout/sider/index";
-import HeaderLayout from "layout/header/index";
+import SiderLayout from "layout/sider";
+import HeaderLayout from "layout/header";
 import FooterLayout from "./layout/footer";
-import HomePage from "pages/home/index";
-import LoginPage from "pages/login/index";
-import RandomRewardPage from "pages/randomReward/index";
-import ClaimRewardPage from "pages/claimReward/index";
-import PageNotFound from "./pages/pageNotFound";
+import HomePage from "pages/customer/home";
+import LoginPage from "pages/customer/login";
+import RandomRewardPage from "pages/customer/randomReward";
+import ClaimRewardPage from "pages/customer/claimReward";
+import PageNotFound from "./pages/customer/pageNotFound";
 
 import { commonSelector } from "./store/slice/common";
+
+import homeAdminPage from "./pages/admin/home";
+import userPage from "./pages/admin/user";
+import rewardPage from "./pages/admin/reward";
+import dataPage from "./pages/admin/data";
+import staffPage from "./pages/admin/staff";
+import rewardRandomPage from "./pages/admin/rewardRandom";
+
 const { Content } = Layout;
 
 function App() {
@@ -28,6 +36,7 @@ function App() {
   const isLoading = useSelector(commonSelector).loading;
 
   const isHaveTokenLogin = cookies.token ? true : false;
+  const mockRole = cookies.token;
 
   const LoginRoute = ({ component: Component, ...rest }: any) => (
     <Route
@@ -37,6 +46,39 @@ function App() {
       }
     />
   );
+
+  const routeCustomer = () => {
+    return (
+      <>
+        <Switch>
+          <Route exact path="/home" component={HomePage}></Route>
+          <Route path="/random-reward" component={RandomRewardPage}></Route>
+          <Route path="/claim-reward" component={ClaimRewardPage}></Route>
+          <Route path="*" component={PageNotFound} />
+        </Switch>
+      </>
+    );
+  };
+
+  const routeAdmin = () => {
+    return (
+      <>
+        <Switch>
+          <Route exact path="/home" component={homeAdminPage}></Route>
+          <Route exact path="/user" component={userPage}></Route>
+          <Route exact path="/reward" component={rewardPage}></Route>
+          <Route
+            exact
+            path="/reward-random"
+            component={rewardRandomPage}
+          ></Route>
+          <Route exact path="/data" component={dataPage}></Route>
+          <Route exact path="/staff" component={staffPage}></Route>
+          <Route path="*" component={PageNotFound} />
+        </Switch>
+      </>
+    );
+  };
 
   return (
     <>
@@ -72,18 +114,7 @@ function App() {
                         height: "84vh",
                       }}
                     >
-                      <Switch>
-                        <Route exact path="/home" component={HomePage}></Route>
-                        <Route
-                          path="/random-reward"
-                          component={RandomRewardPage}
-                        ></Route>
-                        <Route
-                          path="/claim-reward"
-                          component={ClaimRewardPage}
-                        ></Route>
-                        <Route path="*" component={PageNotFound} />
-                      </Switch>
+                      {mockRole === "admin" ? routeAdmin() : routeCustomer()}
                     </Content>
                     <FooterLayout />
                   </Layout>
