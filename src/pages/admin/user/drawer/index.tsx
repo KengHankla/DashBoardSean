@@ -4,14 +4,15 @@ import { Button, Drawer, Space } from "antd";
 interface ITFPropsDrawerUser {
   onClose: (e: React.MouseEvent | React.KeyboardEvent) => void;
   isOpen: boolean;
+  title: string;
 }
 
 const DrawerUser = (props: ITFPropsDrawerUser) => {
-  const { isOpen, onClose } = props;
+  const { isOpen, onClose, title } = props;
 
   return (
     <Drawer
-      title={` Drawer`}
+      title={`Add/Edit ${title}`}
       placement="right"
       size={"default"}
       onClose={onClose}
@@ -24,6 +25,7 @@ const DrawerUser = (props: ITFPropsDrawerUser) => {
           </Button>
         </Space>
       }
+      maskClosable={false}
     >
       <p>Some contents...</p>
       <p>Some contents...</p>
