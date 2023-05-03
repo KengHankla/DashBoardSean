@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -27,11 +27,11 @@ import rewardPage from "./pages/admin/reward";
 import dataPage from "./pages/admin/data";
 import staffPage from "./pages/admin/staff";
 import rewardRandomPage from "./pages/admin/rewardRandom";
-
 const { Content } = Layout;
 
 function App() {
   const [collapsed, setCollapsed] = useState<boolean>(false);
+  const [hiddenExpandSider, setHiddenExpandSider] = useState<boolean>(false);
   const [cookies] = useCookies(["token"]);
   const isLoading = useSelector(commonSelector).loading;
 
@@ -46,6 +46,13 @@ function App() {
       }
     />
   );
+
+  useEffect(() => {
+    if (window.innerWidth < 600) {
+      setCollapsed(true);
+      setHiddenExpandSider(true);
+    }
+  }, []);
 
   const routeCustomer = () => {
     return (
@@ -106,6 +113,7 @@ function App() {
                     <HeaderLayout
                       collapsed={collapsed}
                       setCollapsed={setCollapsed}
+                      hiddenExpandSider={hiddenExpandSider}
                     />
                     <Content
                       style={{

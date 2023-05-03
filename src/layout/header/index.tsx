@@ -7,14 +7,18 @@ const { Header } = Layout;
 interface ITFProps {
   collapsed: boolean;
   setCollapsed: React.Dispatch<React.SetStateAction<boolean>>;
+  hiddenExpandSider: boolean;
 }
 const HeaderLayout = (props: ITFProps) => {
-  const { collapsed, setCollapsed } = props;
+  const { collapsed, setCollapsed, hiddenExpandSider } = props;
   const [, , removeCookie] = useCookies(["token"]);
 
   const onClickLogOut = async () => {
     removeCookie("token");
   };
+
+  console.log(hiddenExpandSider);
+
   return (
     <Header
       style={{
@@ -26,16 +30,22 @@ const HeaderLayout = (props: ITFProps) => {
       }}
     >
       <Container>
-        <Button
-          type="text"
-          icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-          onClick={() => setCollapsed(!collapsed)}
-          style={{
-            fontSize: "16px",
-            width: 64,
-            height: 64,
-          }}
-        />
+        {hiddenExpandSider ? (
+          <div></div>
+        ) : (
+          <Button
+            type="text"
+            icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+            onClick={() => setCollapsed(!collapsed)}
+            style={{
+              fontSize: "16px",
+              width: 64,
+              height: 64,
+              display: hiddenExpandSider ? "none" : "",
+            }}
+          />
+        )}
+
         <Button danger onClick={onClickLogOut}>
           Log Out
         </Button>
