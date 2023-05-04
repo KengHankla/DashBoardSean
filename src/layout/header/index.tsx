@@ -17,7 +17,6 @@ const HeaderLayout = (props: ITFProps) => {
     removeCookie("token");
   };
 
-  console.log(hiddenExpandSider);
 
   return (
     <Header

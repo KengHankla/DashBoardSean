@@ -30,7 +30,9 @@
       "@api/*" :["api/*"],
       "@utils/*" :["utils/*"],
       "@helper/*" :["helper/*"],
-      "@layout/*" :["layout/*"]
+      "@layout/*" :["layout/*"],
+      "@common/*" :["common/*"],
+      "@hooks/*" :["hooks/*"]
     }
   },
   "include": [
