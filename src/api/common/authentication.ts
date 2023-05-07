@@ -7,4 +7,5 @@ export const getData = async () => {
 };
 export const logout = () => {
   cookies.remove("token");
+  cookies.remove("selectedTabs");
 };

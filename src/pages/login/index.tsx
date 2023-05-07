@@ -14,10 +14,11 @@ const LoginPage = () => {
   const history = useHistory();
   const dispatch = useAppDispatch();
 
-  const [, setCookie] = useCookies(["token"]);
+  const [, setCookie] = useCookies(["token", "selectedTabs"]);
 
   const onFinish = (values: ITFOnfinishLogin) => {
     history.push("home");
+    setCookie("selectedTabs", "home", { path: "/" });
     dispatch(setLoading(true));
     setTimeout(() => {
       try {

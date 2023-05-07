@@ -14,7 +14,7 @@ import SiderLayout from "layout/sider";
 import HeaderLayout from "layout/header";
 import FooterLayout from "./layout/footer";
 import HomePage from "pages/customer/home";
-import LoginPage from "pages/customer/login";
+import LoginPage from "pages/login";
 import RandomRewardPage from "pages/customer/randomReward";
 import ClaimRewardPage from "pages/customer/claimReward";
 import PageNotFound from "./pages/customer/pageNotFound";

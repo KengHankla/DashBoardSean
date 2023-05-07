@@ -19,11 +19,13 @@ interface propsITF {
 const SiderLayout = (props: propsITF) => {
   const { collapsed } = props;
   const history = useHistory();
-  const [cookies] = useCookies(["token"]);
+  const [cookies] = useCookies(["token", "selectedTabs"]);
+  const [, setCookie] = useCookies(["selectedTabs"]);
 
   const mockRole = cookies.token;
 
   const onClickMenu = (e: any) => {
+    setCookie("selectedTabs", e.key, { path: "/" });
     history.push(e.key);
   };
 
@@ -96,7 +98,7 @@ const SiderLayout = (props: propsITF) => {
       <Menu
         theme="dark"
         mode="inline"
-        defaultSelectedKeys={["1"]}
+        selectedKeys={cookies.selectedTabs}
         onClick={onClickMenu}
         items={mockRole === "admin" ? menuAdmin : menuCustomer}
       />
