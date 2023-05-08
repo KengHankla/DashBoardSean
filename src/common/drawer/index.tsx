@@ -1,12 +1,15 @@
 import React, { useEffect } from "react";
 import { Button, Drawer, Form, FormInstance, Row } from "antd";
-import { ITFDataTableUser } from "types/management.types";
+import {
+  ITFDataTableUser,
+  ITFDataTableRandomReward,
+} from "types/management.types";
 
 interface ITFPropsDrawerUser {
   onClose: (e: React.MouseEvent | React.KeyboardEvent) => void;
   isOpen: boolean;
   title: string;
-  dataEdit: ITFDataTableUser | undefined;
+  dataEdit: ITFDataTableUser | ITFDataTableRandomReward | undefined;
   form: FormInstance;
   handleSetFields: Function;
   displayContent: JSX.Element;
@@ -14,7 +17,7 @@ interface ITFPropsDrawerUser {
   onFinishFailed: ((values: any) => void) | undefined;
 }
 
-const DrawerUser = (props: ITFPropsDrawerUser) => {
+const DrawerCommon = (props: ITFPropsDrawerUser) => {
   const {
     isOpen,
     onClose,
@@ -66,4 +69,4 @@ const DrawerUser = (props: ITFPropsDrawerUser) => {
   );
 };
 
-export default DrawerUser;
+export default DrawerCommon;

@@ -1,13 +1,25 @@
 import { Table } from "antd";
 import type { ColumnsType } from "antd/es/table";
-import { ITFDataTableUser } from "types/management.types";
+import {
+  ITFDataTableUser,
+  ITFDataTableRandomReward,
+} from "types/management.types";
 
 interface ITFPropsTableManagement {
-  columns: ColumnsType<ITFDataTableUser>;
-  data: ITFDataTableUser[];
+  columns: ColumnsType<ITFDataTableUser | ITFDataTableRandomReward | any>;
+  data: ITFDataTableUser[] | ITFDataTableRandomReward[];
+  summryTable?: (data: readonly any[]) => React.ReactNode;
 }
+
 const TableManagement = (props: ITFPropsTableManagement) => {
-  const { columns, data } = props;
+  const {
+    columns,
+    data,
+    summryTable = () => {
+      return <></>;
+    },
+  } = props;
+
   return (
     <>
       <Table
@@ -18,6 +30,7 @@ const TableManagement = (props: ITFPropsTableManagement) => {
           showTotal: (total, range) =>
             `${range[0]}-${range[1]} of ${total} items`,
         }}
+        summary={(pageData) => summryTable(pageData)}
       />
     </>
   );
