@@ -1,9 +1,10 @@
 import { useCookies } from "react-cookie";
 import { Container } from "./styles";
-import { Input, Form, Checkbox, Button } from "antd";
+import { Input, Form, Button } from "antd";
 import { useHistory } from "react-router-dom";
 import { useAppDispatch } from "store/store";
 import { setLoading } from "store/slice/common";
+import { ALERT_REQUIRE_FIELD } from "constants/word";
 interface ITFOnfinishLogin {
   username: string;
   password: string;
@@ -48,28 +49,28 @@ const LoginPage = () => {
         style={{ width: "20%" }}
       >
         <Form.Item
-          label="Username"
+          label="ชื่อผู้ใช้"
           name="username"
-          rules={[{ required: true, message: "Please input your username!" }]}
+          rules={[
+            { required: true, message: ALERT_REQUIRE_FIELD + "ชื่อผู้ใช้" },
+          ]}
         >
           <Input />
         </Form.Item>
 
         <Form.Item
-          label="Password"
+          label="รหัสผ่าน"
           name="password"
-          rules={[{ required: true, message: "Please input your password!" }]}
+          rules={[
+            { required: true, message: ALERT_REQUIRE_FIELD + "รหัสผ่าน" },
+          ]}
         >
           <Input.Password />
         </Form.Item>
 
-        <Form.Item name="remember" valuePropName="checked">
-          <Checkbox>Remember me</Checkbox>
-        </Form.Item>
-
         <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
           <Button type="primary" htmlType="submit">
-            Submit
+            เข้าสู่ระบบ
           </Button>
         </Form.Item>
       </Form>

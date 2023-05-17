@@ -13,9 +13,9 @@ const HeaderManagement = (props: ITFHeaderManagement) => {
         alignItems: "center",
       }}
     >
-      <h1>{title} Management</h1>
+      <h1>การจัดการ {title}</h1>
       <Button type="primary" onClick={onClickButtonAddNew}>
-        Add New {title}
+        เพิ่ม {title}
       </Button>
     </Row>
   );

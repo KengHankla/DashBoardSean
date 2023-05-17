@@ -40,7 +40,7 @@ const DrawerCommon = (props: ITFPropsDrawerUser) => {
 
   return (
     <Drawer
-      title={`${dataEdit === undefined ? "Add" : "Edit"} ${title}`}
+      title={`${dataEdit === undefined ? "เพิ่ม" : "แก้ไข"} ${title}`}
       placement="right"
       size={"default"}
       onClose={onClose}
@@ -57,11 +57,11 @@ const DrawerCommon = (props: ITFPropsDrawerUser) => {
         {displayContent}
         <Row style={{ justifyContent: "flex-end", gap: "8px" }}>
           <Button onClick={onClose} danger>
-            Cancel
+            ยกเลิก
           </Button>
 
           <Button type="primary" htmlType="submit">
-            OK
+            ยืนยัน
           </Button>
         </Row>
       </Form>

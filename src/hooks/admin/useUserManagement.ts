@@ -3,7 +3,7 @@ import { useState } from "react";
 import { FormInstance } from "antd";
 
 export const useUserManagement = (form: FormInstance) => {
-  const title = "User";
+  const title = "ผู้ใช้งาน";
   const [isOperDrawer, setIsOperDrawer] = useState<boolean>(false);
   const [dataEdit, setDataEdit] = useState<ITFDataTableUser | undefined>(
     undefined

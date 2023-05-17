@@ -6,7 +6,7 @@ import { FormInstance } from "antd";
 import { useState } from "react";
 
 export const useRewardRandomManagement = (form: FormInstance) => {
-  const title = "Reward Random";
+  const title = "สิ่งของในวงล้อ";
   const [isOperDrawer, setIsOperDrawer] = useState<boolean>(false);
   const [dataEdit, setDataEdit] = useState<
     ITFDataTableRandomReward | undefined

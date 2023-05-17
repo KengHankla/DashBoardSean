@@ -33,17 +33,17 @@ const SiderLayout = (props: propsITF) => {
     {
       key: "home",
       icon: <HomeOutlined />,
-      label: "Home",
+      label: "หน้าหลัก",
     },
     {
       key: "random-reward",
       icon: <LaptopOutlined />,
-      label: "Random Reward",
+      label: "สุ่มของรางวัล",
     },
     {
       key: "claim-reward",
       icon: <GiftOutlined />,
-      label: "Claim Reward",
+      label: "แลกของรางวัล",
     },
   ];
 
@@ -51,32 +51,32 @@ const SiderLayout = (props: propsITF) => {
     {
       key: "home",
       icon: <HomeOutlined />,
-      label: "Home",
+      label: "หน้าหลัก",
     },
     {
       key: "user",
       icon: <UserOutlined />,
-      label: "User",
+      label: "จัดการผู้ใช้งาน",
     },
     {
       key: "staff",
       icon: <IdcardOutlined />,
-      label: "Staff",
+      label: "จัดการผู้ดูแลระบบ",
     },
     {
       key: "reward-random",
       icon: <LaptopOutlined />,
-      label: "Reward Random",
+      label: "จัดการสิ่งของในวงล้อ",
     },
     {
       key: "reward",
       icon: <GiftOutlined />,
-      label: "Reward",
+      label: "จัดการของรางวัล",
     },
     {
       key: "data",
       icon: <DatabaseOutlined />,
-      label: "Data",
+      label: "นำเข้่าข้อมูล",
     },
   ];
 

@@ -17,7 +17,6 @@ const HeaderLayout = (props: ITFProps) => {
     removeCookie("token");
   };
 
-
   return (
     <Header
       style={{
@@ -46,7 +45,7 @@ const HeaderLayout = (props: ITFProps) => {
         )}
 
         <Button danger onClick={onClickLogOut}>
-          Log Out
+          ออกจากระบบ
         </Button>
       </Container>
     </Header>

@@ -7,6 +7,7 @@ import { ITFDataTableRandomReward } from "types/management.types";
 import { EditOutlined } from "@ant-design/icons";
 import DrawerCommon from "common/drawer";
 import { Table } from "antd";
+import { ALERT_REQUIRE_FIELD } from "constants/word";
 const RewardRandomPage = () => {
   const [formRewardRandomManagement] = Form.useForm();
 
@@ -25,17 +26,17 @@ const RewardRandomPage = () => {
 
   const columns: ColumnsType<ITFDataTableRandomReward> = [
     {
-      title: "Name",
+      title: "ชื่อสินค้า",
       key: "name",
       dataIndex: "name",
     },
     {
-      title: "Percent",
+      title: "เปอร์เซ็นต์",
       key: "percent",
       dataIndex: "percent",
     },
     {
-      title: "Action",
+      title: "ปุ่ม",
       key: "action",
       align: "center",
       render: (_, record: ITFDataTableRandomReward, __) => {
@@ -56,18 +57,22 @@ const RewardRandomPage = () => {
       <div>
         <Col>
           <Form.Item
-            label="Name"
+            label="ชื่อสินค้า"
             name="name"
-            rules={[{ required: true, message: "Please enter name!" }]}
+            rules={[
+              { required: true, message: ALERT_REQUIRE_FIELD + "ชื่อสินค้า" },
+            ]}
           >
             <Input />
           </Form.Item>
         </Col>
         <Col>
           <Form.Item
-            label="Percent"
+            label="เปอร์เซ็นต์"
             name="percent"
-            rules={[{ required: true, message: "Please enter percent!" }]}
+            rules={[
+              { required: true, message: ALERT_REQUIRE_FIELD + "เปอร์เซ็นต์" },
+            ]}
           >
             <Input />
           </Form.Item>
@@ -88,7 +93,7 @@ const RewardRandomPage = () => {
     return (
       <>
         <Table.Summary.Row>
-          <Table.Summary.Cell index={0}>Total</Table.Summary.Cell>
+          <Table.Summary.Cell index={0}>ทั้งหมด</Table.Summary.Cell>
           <Table.Summary.Cell index={1}>
             <div>{totalPercent}</div>
           </Table.Summary.Cell>

@@ -1,0 +1,1 @@
+export const ALERT_REQUIRE_FIELD = "กรุณากรอก";

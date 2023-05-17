@@ -99,7 +99,7 @@ function App() {
           }}
         >
           <FadeIn>
-            <h1>Fetching</h1>
+            <h1>กำลังโหลด...</h1>
           </FadeIn>
         </Layout>
       ) : (

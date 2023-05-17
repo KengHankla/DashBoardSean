@@ -6,6 +6,7 @@ import HeaderManagement from "component/headerManagement";
 import { EditOutlined } from "@ant-design/icons";
 import { Col, Form, Input, Row } from "antd";
 import { useUserManagement } from "hooks/admin/useUserManagement";
+import { ALERT_REQUIRE_FIELD } from "constants/word";
 
 const UserPage = () => {
   const [formUserManagement] = Form.useForm();
@@ -24,7 +25,7 @@ const UserPage = () => {
 
   const columns: ColumnsType<ITFDataTableUser> = [
     {
-      title: "Name",
+      title: "ชื่อจริง - นามสกุล",
       key: "name",
       render: (text: string, record: ITFDataTableUser, index: number) => {
         return (
@@ -35,7 +36,7 @@ const UserPage = () => {
       },
     },
     {
-      title: "Action",
+      title: "ปุ่ม",
       key: "action",
       align: "center",
       render: (text: string, record: ITFDataTableUser, index: number) => {
@@ -56,18 +57,22 @@ const UserPage = () => {
       <Row gutter={10}>
         <Col xs={24} sm={24} md={24} lg={12} xl={12}>
           <Form.Item
-            label="First name"
+            label="ชื่อจริง"
             name="firstName"
-            rules={[{ required: true, message: "Please enter first name!" }]}
+            rules={[
+              { required: true, message: ALERT_REQUIRE_FIELD + "ชื่อจริง" },
+            ]}
           >
             <Input />
           </Form.Item>
         </Col>
         <Col xs={24} sm={24} md={24} lg={12} xl={12}>
           <Form.Item
-            label="Last name"
+            label="นามสกุล"
             name="lastName"
-            rules={[{ required: true, message: "Please enter last name!" }]}
+            rules={[
+              { required: true, message: ALERT_REQUIRE_FIELD + "นามสกุล" },
+            ]}
           >
             <Input />
           </Form.Item>
