@@ -2,6 +2,8 @@ import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 import { Layout, Button } from "antd";
 import { Container } from "./styles";
 import { useCookies } from "react-cookie";
+import { useTranslation } from "react-i18next";
+
 const { Header } = Layout;
 
 interface ITFProps {
@@ -10,6 +12,7 @@ interface ITFProps {
   hiddenExpandSider: boolean;
 }
 const HeaderLayout = (props: ITFProps) => {
+  const { t } = useTranslation();
   const { collapsed, setCollapsed, hiddenExpandSider } = props;
   const [, , removeCookie] = useCookies(["token"]);
 
@@ -45,7 +48,7 @@ const HeaderLayout = (props: ITFProps) => {
         )}
 
         <Button danger onClick={onClickLogOut}>
-          ออกจากระบบ
+          {t("Log Out")}
         </Button>
       </Container>
     </Header>

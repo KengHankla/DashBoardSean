@@ -1,10 +1,10 @@
 import { useCookies } from "react-cookie";
 import { Container } from "./styles";
-import { Input, Form, Button } from "antd";
+import { Input, Form, Button, Select } from "antd";
 import { useHistory } from "react-router-dom";
 import { useAppDispatch } from "store/store";
 import { setLoading } from "store/slice/common";
-import { ALERT_REQUIRE_FIELD } from "constants/word";
+import { useTranslation } from "react-i18next";
 interface ITFOnfinishLogin {
   username: string;
   password: string;
@@ -16,6 +16,8 @@ const LoginPage = () => {
   const dispatch = useAppDispatch();
 
   const [, setCookie] = useCookies(["token", "selectedTabs"]);
+
+  const { t, i18n } = useTranslation();
 
   const onFinish = (values: ITFOnfinishLogin) => {
     history.push("home");
@@ -37,6 +39,10 @@ const LoginPage = () => {
     console.log("Failed:", errorInfo);
   };
 
+  const onChangeSelectTranslations = (e: string) => {
+    i18n.changeLanguage(e);
+  };
+
   return (
     <Container>
       <Form
@@ -49,28 +55,37 @@ const LoginPage = () => {
         style={{ width: "20%" }}
       >
         <Form.Item
-          label="ชื่อผู้ใช้"
+          label={t("Username")}
           name="username"
           rules={[
-            { required: true, message: ALERT_REQUIRE_FIELD + "ชื่อผู้ใช้" },
+            { required: true, message: t("Please enter") + t("Username") },
           ]}
         >
           <Input />
         </Form.Item>
 
         <Form.Item
-          label="รหัสผ่าน"
+          label={t("Password")}
           name="password"
           rules={[
-            { required: true, message: ALERT_REQUIRE_FIELD + "รหัสผ่าน" },
+            { required: true, message: t("Please enter") + t("Username") },
           ]}
         >
           <Input.Password />
         </Form.Item>
 
+        <Select
+          style={{ width: "100%", display: "none" }}
+          onChange={onChangeSelectTranslations}
+          options={[
+            { value: "en", label: "english" },
+            { value: "th", label: "thai" },
+          ]}
+        ></Select>
+
         <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
           <Button type="primary" htmlType="submit">
-            เข้าสู่ระบบ
+            {t("Login")}
           </Button>
         </Form.Item>
       </Form>

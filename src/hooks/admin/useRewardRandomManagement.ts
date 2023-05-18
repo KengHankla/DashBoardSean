@@ -4,9 +4,12 @@ import {
 } from "types/management.types";
 import { FormInstance } from "antd";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export const useRewardRandomManagement = (form: FormInstance) => {
-  const title = "สิ่งของในวงล้อ";
+  const { t } = useTranslation();
+
+  const title = t("Random Reward");
   const [isOperDrawer, setIsOperDrawer] = useState<boolean>(false);
   const [dataEdit, setDataEdit] = useState<
     ITFDataTableRandomReward | undefined

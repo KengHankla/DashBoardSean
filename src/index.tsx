@@ -8,6 +8,7 @@ import { CookiesProvider } from "react-cookie";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { store, persistor } from "store/store";
+import "./i18n";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

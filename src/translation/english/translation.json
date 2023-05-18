@@ -1,0 +1,33 @@
+{
+  "username": "Username",
+  "Password": "Password",
+  "Login": "Login",
+  "Log out": "Log out",
+  "Loading": "Loading",
+
+  "Home Page": "Home Page",
+  "Random Reward": "Random Reward",
+  "Claim Reward": "Claim Reward",
+  "User": "User",
+  "Admin": "Admin",
+  "Reward Random": "Reward Random",
+  "Reward": "Reward",
+  "Import Data": "Import Data",
+
+  "Firstname - Surname": "Firstname - Surname",
+  "Action": "Action",
+  "First name": "First name",
+  "Last name": "Last name",
+  "Please enter": "Please enter",
+
+  "Add": "Add",
+  "Edit": "Edit",
+  "Cancel": "Cancel",
+  "Submit": "Submit",
+
+  "Product name": "Product name",
+  "Percent": "Percent",
+  "Total": "Total",
+
+  "default": "default"
+}

@@ -27,9 +27,12 @@ import rewardPage from "./pages/admin/reward";
 import dataPage from "./pages/admin/data";
 import staffPage from "./pages/admin/staff";
 import rewardRandomPage from "./pages/admin/rewardRandom";
+import { useTranslation } from "react-i18next";
+
 const { Content } = Layout;
 
 function App() {
+  const { t } = useTranslation();
   const [collapsed, setCollapsed] = useState<boolean>(false);
   const [hiddenExpandSider, setHiddenExpandSider] = useState<boolean>(false);
   const [cookies] = useCookies(["token"]);
@@ -99,7 +102,7 @@ function App() {
           }}
         >
           <FadeIn>
-            <h1>กำลังโหลด...</h1>
+            <h1>{t("Loading")}...</h1>
           </FadeIn>
         </Layout>
       ) : (

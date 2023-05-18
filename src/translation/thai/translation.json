@@ -1,0 +1,33 @@
+{
+  "username": "ชื่อผู้ใช้",
+  "Password": "รหัสผ่าน",
+  "Login": "เข้าสู่ระบบ",
+  "Log out": "ออกจากระบบ",
+  "Loading": "กำลังโหลด",
+
+  "Home Page": "หน้าหลัก",
+  "Random Reward": "สุ่มของรางวัล",
+  "Claim Reward": "แลกของรางวัล",
+  "User": "จัดการผู้ใช้งาน",
+  "Admin": "จัดการแอดมิน",
+  "Reward Random": "จัดการสิ่่งของในวงล้อ",
+  "Reward": "ของรางวัล",
+  "Import Data": "นำเข้าข้อมูล",
+
+  "Firstname - Surname": "ชื่อจริง - นามสกุล",
+  "Action": "ปุ่ม",
+  "First name": "ชื่อจริง",
+  "Last name": "นามสกุล",
+  "Please enter": "กรุณากรอก",
+
+  "Add": "เพิ่ม",
+  "Edit": "แก้ไข",
+  "Cancel": "ยกเลิก",
+  "Submit": "ยืนยัน",
+
+  "Product name": "ชื่อสินค้า",
+  "Percent": "เปอร์เซ็นต์",
+  "Total": "ทั้งหมด",
+
+  "default": "default"
+}

@@ -32,6 +32,7 @@
       "@helper/*" :["helper/*"],
       "@layout/*" :["layout/*"],
       "@common/*" :["common/*"],
+      "@translation/*" :["translation/*"],
       "@hooks/*" :["hooks/*"]
     }
   },

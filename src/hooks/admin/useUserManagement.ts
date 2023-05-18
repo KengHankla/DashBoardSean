@@ -1,9 +1,12 @@
 import { ITFDataTableUser, ITFOnFinishUser } from "types/management.types";
 import { useState } from "react";
 import { FormInstance } from "antd";
+import { useTranslation } from "react-i18next";
 
 export const useUserManagement = (form: FormInstance) => {
-  const title = "ผู้ใช้งาน";
+  const { t } = useTranslation();
+
+  const title = t("User");
   const [isOperDrawer, setIsOperDrawer] = useState<boolean>(false);
   const [dataEdit, setDataEdit] = useState<ITFDataTableUser | undefined>(
     undefined

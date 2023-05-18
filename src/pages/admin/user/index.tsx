@@ -6,9 +6,10 @@ import HeaderManagement from "component/headerManagement";
 import { EditOutlined } from "@ant-design/icons";
 import { Col, Form, Input, Row } from "antd";
 import { useUserManagement } from "hooks/admin/useUserManagement";
-import { ALERT_REQUIRE_FIELD } from "constants/word";
+import { useTranslation } from "react-i18next";
 
 const UserPage = () => {
+  const { t } = useTranslation();
   const [formUserManagement] = Form.useForm();
   const {
     title,
@@ -25,7 +26,7 @@ const UserPage = () => {
 
   const columns: ColumnsType<ITFDataTableUser> = [
     {
-      title: "ชื่อจริง - นามสกุล",
+      title: t("Firstname - Surname"),
       key: "name",
       render: (text: string, record: ITFDataTableUser, index: number) => {
         return (
@@ -36,7 +37,7 @@ const UserPage = () => {
       },
     },
     {
-      title: "ปุ่ม",
+      title: t("Action"),
       key: "action",
       align: "center",
       render: (text: string, record: ITFDataTableUser, index: number) => {
@@ -57,10 +58,13 @@ const UserPage = () => {
       <Row gutter={10}>
         <Col xs={24} sm={24} md={24} lg={12} xl={12}>
           <Form.Item
-            label="ชื่อจริง"
+            label={t("First name")}
             name="firstName"
             rules={[
-              { required: true, message: ALERT_REQUIRE_FIELD + "ชื่อจริง" },
+              {
+                required: true,
+                message: t("Please enter") + t("First name"),
+              },
             ]}
           >
             <Input />
@@ -68,10 +72,10 @@ const UserPage = () => {
         </Col>
         <Col xs={24} sm={24} md={24} lg={12} xl={12}>
           <Form.Item
-            label="นามสกุล"
+            label={t("Last name")}
             name="lastName"
             rules={[
-              { required: true, message: ALERT_REQUIRE_FIELD + "นามสกุล" },
+              { required: true, message: t("Please enter") + t("Last name") },
             ]}
           >
             <Input />

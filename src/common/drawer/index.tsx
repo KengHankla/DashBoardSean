@@ -4,6 +4,7 @@ import {
   ITFDataTableUser,
   ITFDataTableRandomReward,
 } from "types/management.types";
+import { useTranslation } from "react-i18next";
 
 interface ITFPropsDrawerUser {
   onClose: (e: React.MouseEvent | React.KeyboardEvent) => void;
@@ -18,6 +19,7 @@ interface ITFPropsDrawerUser {
 }
 
 const DrawerCommon = (props: ITFPropsDrawerUser) => {
+  const { t } = useTranslation();
   const {
     isOpen,
     onClose,
@@ -40,7 +42,7 @@ const DrawerCommon = (props: ITFPropsDrawerUser) => {
 
   return (
     <Drawer
-      title={`${dataEdit === undefined ? "เพิ่ม" : "แก้ไข"} ${title}`}
+      title={`${dataEdit === undefined ? t("Add") : t("Edit")} ${title}`}
       placement="right"
       size={"default"}
       onClose={onClose}
@@ -57,11 +59,11 @@ const DrawerCommon = (props: ITFPropsDrawerUser) => {
         {displayContent}
         <Row style={{ justifyContent: "flex-end", gap: "8px" }}>
           <Button onClick={onClose} danger>
-            ยกเลิก
+            {t("Cancel")}
           </Button>
 
           <Button type="primary" htmlType="submit">
-            ยืนยัน
+            {t("Submit")}
           </Button>
         </Row>
       </Form>

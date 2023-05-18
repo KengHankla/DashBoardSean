@@ -7,8 +7,10 @@ import { ITFDataTableRandomReward } from "types/management.types";
 import { EditOutlined } from "@ant-design/icons";
 import DrawerCommon from "common/drawer";
 import { Table } from "antd";
-import { ALERT_REQUIRE_FIELD } from "constants/word";
+import { useTranslation } from "react-i18next";
+
 const RewardRandomPage = () => {
+  const { t } = useTranslation();
   const [formRewardRandomManagement] = Form.useForm();
 
   const {
@@ -26,17 +28,17 @@ const RewardRandomPage = () => {
 
   const columns: ColumnsType<ITFDataTableRandomReward> = [
     {
-      title: "ชื่อสินค้า",
+      title: t("Product name"),
       key: "name",
       dataIndex: "name",
     },
     {
-      title: "เปอร์เซ็นต์",
+      title: t("Percent"),
       key: "percent",
       dataIndex: "percent",
     },
     {
-      title: "ปุ่ม",
+      title: t("Action"),
       key: "action",
       align: "center",
       render: (_, record: ITFDataTableRandomReward, __) => {
@@ -57,10 +59,13 @@ const RewardRandomPage = () => {
       <div>
         <Col>
           <Form.Item
-            label="ชื่อสินค้า"
+            label={t("Product name")}
             name="name"
             rules={[
-              { required: true, message: ALERT_REQUIRE_FIELD + "ชื่อสินค้า" },
+              {
+                required: true,
+                message: t("Please enter") + t("Product name"),
+              },
             ]}
           >
             <Input />
@@ -68,10 +73,13 @@ const RewardRandomPage = () => {
         </Col>
         <Col>
           <Form.Item
-            label="เปอร์เซ็นต์"
+            label={t("Percent")}
             name="percent"
             rules={[
-              { required: true, message: ALERT_REQUIRE_FIELD + "เปอร์เซ็นต์" },
+              {
+                required: true,
+                message: t("Please enter") + t("Percent"),
+              },
             ]}
           >
             <Input />
@@ -93,7 +101,7 @@ const RewardRandomPage = () => {
     return (
       <>
         <Table.Summary.Row>
-          <Table.Summary.Cell index={0}>ทั้งหมด</Table.Summary.Cell>
+          <Table.Summary.Cell index={0}>{t("Total")}</Table.Summary.Cell>
           <Table.Summary.Cell index={1}>
             <div>{totalPercent}</div>
           </Table.Summary.Cell>

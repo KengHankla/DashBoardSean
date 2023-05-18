@@ -9,6 +9,7 @@ import {
 import { Layout, Menu } from "antd";
 import { useHistory } from "react-router-dom";
 import { useCookies } from "react-cookie";
+import { useTranslation } from "react-i18next";
 
 const { Sider } = Layout;
 
@@ -17,6 +18,7 @@ interface propsITF {
 }
 
 const SiderLayout = (props: propsITF) => {
+  const { t } = useTranslation();
   const { collapsed } = props;
   const history = useHistory();
   const [cookies] = useCookies(["token", "selectedTabs"]);
@@ -33,17 +35,17 @@ const SiderLayout = (props: propsITF) => {
     {
       key: "home",
       icon: <HomeOutlined />,
-      label: "หน้าหลัก",
+      label: t("Home Page"),
     },
     {
       key: "random-reward",
       icon: <LaptopOutlined />,
-      label: "สุ่มของรางวัล",
+      label: t("Random Reward"),
     },
     {
       key: "claim-reward",
       icon: <GiftOutlined />,
-      label: "แลกของรางวัล",
+      label: t("Claim Reward"),
     },
   ];
 
@@ -51,32 +53,32 @@ const SiderLayout = (props: propsITF) => {
     {
       key: "home",
       icon: <HomeOutlined />,
-      label: "หน้าหลัก",
+      label: t("Home Page"),
     },
     {
       key: "user",
       icon: <UserOutlined />,
-      label: "จัดการผู้ใช้งาน",
+      label: t("User"),
     },
     {
-      key: "staff",
+      key: "admin",
       icon: <IdcardOutlined />,
-      label: "จัดการผู้ดูแลระบบ",
+      label: t("Admin"),
     },
     {
       key: "reward-random",
       icon: <LaptopOutlined />,
-      label: "จัดการสิ่งของในวงล้อ",
+      label: t("Reward Random"),
     },
     {
       key: "reward",
       icon: <GiftOutlined />,
-      label: "จัดการของรางวัล",
+      label: t("Reward"),
     },
     {
       key: "data",
       icon: <DatabaseOutlined />,
-      label: "นำเข้่าข้อมูล",
+      label: t("Import Data"),
     },
   ];
 
