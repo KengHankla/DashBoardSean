@@ -10,11 +10,14 @@ import { useCookies } from "react-cookie";
 import { useSelector } from "react-redux";
 import FadeIn from "react-fade-in";
 
-import SiderLayout from "layout/sider";
-import HeaderLayout from "layout/header";
-import FooterLayout from "./layout/footer";
+import SiderLayoutAdmin from "pages/admin/layout/sider";
+import HeaderLayoutAdmin from "pages/admin/layout/header";
+import FooterLayoutAdmin from "pages/admin/layout/footer";
+
+import HeaderLayoutCustomer from "pages/customer/layout/header";
+
 import HomePage from "pages/customer/home";
-import LoginPage from "pages/login";
+import LoginPage from "pages/admin/login";
 import RandomRewardPage from "pages/customer/randomReward";
 import ClaimRewardPage from "pages/customer/claimReward";
 import PageNotFound from "./pages/customer/pageNotFound";
@@ -40,12 +43,17 @@ function App() {
 
   const isHaveTokenLogin = cookies.token ? true : false;
   const mockRole = cookies.token;
+  const pathname = window.location.pathname;
 
-  const LoginRoute = ({ component: Component, ...rest }: any) => (
+  const LoginAdminRoute = ({ component: Component, ...rest }: any) => (
     <Route
       {...rest}
       render={() =>
-        isHaveTokenLogin ? <Redirect to="/home" /> : <Redirect to="/login" />
+        isHaveTokenLogin ? (
+          <Redirect to="/home" />
+        ) : (
+          <Redirect to="/login-admin" />
+        )
       }
     />
   );
@@ -56,19 +64,6 @@ function App() {
       setHiddenExpandSider(true);
     }
   }, []);
-
-  const routeCustomer = () => {
-    return (
-      <>
-        <Switch>
-          <Route exact path="/home" component={HomePage}></Route>
-          <Route path="/random-reward" component={RandomRewardPage}></Route>
-          <Route path="/claim-reward" component={ClaimRewardPage}></Route>
-          <Route path="*" component={PageNotFound} />
-        </Switch>
-      </>
-    );
-  };
 
   const routeAdmin = () => {
     return (
@@ -111,9 +106,9 @@ function App() {
             <Router>
               <FadeIn>
                 <Layout hasSider>
-                  <SiderLayout collapsed={collapsed} />
+                  <SiderLayoutAdmin collapsed={collapsed} />
                   <Layout style={{ marginLeft: !collapsed ? 200 : 80 }}>
-                    <HeaderLayout
+                    <HeaderLayoutAdmin
                       collapsed={collapsed}
                       setCollapsed={setCollapsed}
                       hiddenExpandSider={hiddenExpandSider}
@@ -125,22 +120,44 @@ function App() {
                         height: "84vh",
                       }}
                     >
-                      {mockRole === "admin" ? routeAdmin() : routeCustomer()}
+                      {mockRole === "admin" ? routeAdmin() : <></>}
                     </Content>
-                    <FooterLayout />
+                    <FooterLayoutAdmin />
                   </Layout>
                 </Layout>
               </FadeIn>
             </Router>
           ) : (
-            <Router>
-              <Switch>
-                <Route path="/">
-                  <LoginRoute />
-                  <Route path="/login" component={LoginPage}></Route>
-                </Route>
-              </Switch>
-            </Router>
+            <div>
+              {pathname === "/login-admin" ? (
+                <Router>
+                  <Switch>
+                    <Route path="/">
+                      <LoginAdminRoute />
+                      <Route path="/login-admin" component={LoginPage}></Route>
+                    </Route>
+                  </Switch>
+                </Router>
+              ) : (
+                <Router>
+                  <HeaderLayoutCustomer />
+                  <Content>
+                    <Switch>
+                      <Route exact path="/" component={HomePage}></Route>
+                      <Route
+                        path="/random-reward"
+                        component={RandomRewardPage}
+                      ></Route>
+                      <Route
+                        path="/claim-reward"
+                        component={ClaimRewardPage}
+                      ></Route>
+                      <Route path="*" component={PageNotFound} />
+                    </Switch>
+                  </Content>
+                </Router>
+              )}
+            </div>
           )}
         </Layout>
       )}
