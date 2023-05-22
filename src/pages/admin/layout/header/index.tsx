@@ -14,10 +14,10 @@ interface ITFProps {
 const HeaderLayout = (props: ITFProps) => {
   const { t } = useTranslation();
   const { collapsed, setCollapsed, hiddenExpandSider } = props;
-  const [, , removeCookie] = useCookies(["token"]);
+  const [, , removeCookie] = useCookies(["accessToken"]);
 
   const onClickLogOut = async () => {
-    removeCookie("token");
+    removeCookie("accessToken");
   };
 
   return (

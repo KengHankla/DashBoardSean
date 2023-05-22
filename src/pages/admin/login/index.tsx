@@ -5,34 +5,45 @@ import { useHistory } from "react-router-dom";
 import { useAppDispatch } from "store/store";
 import { setLoading } from "store/slice/common";
 import { useTranslation } from "react-i18next";
-interface ITFOnfinishLogin {
-  username: string;
-  password: string;
-  remember: boolean;
-}
+import { postLogin } from "api/common/authentication";
+import { ITFPostLogin, ITFResponsePostLogin } from "types/authencation.types";
+import jwtDecode from "jwt-decode";
 
 const LoginPage = () => {
   const history = useHistory();
   const dispatch = useAppDispatch();
 
-  const [, setCookie] = useCookies(["token", "selectedTabs"]);
+  const [, setCookie] = useCookies([
+    "accessToken",
+    "selectedTabs",
+    "refreshToken",
+    "userInfo",
+  ]);
 
   const { t, i18n } = useTranslation();
 
-  const onFinish = (values: ITFOnfinishLogin) => {
-    history.push("home");
-    setCookie("selectedTabs", "home", { path: "/" });
+  const onFinish = async (values: ITFPostLogin) => {
     dispatch(setLoading(true));
-    setTimeout(() => {
-      try {
-        setCookie("token", values.username, { path: "/" });
-      } catch (error) {
-      } finally {
-        setTimeout(() => {
-          dispatch(setLoading(false));
-        }, 100);
-      }
-    }, 1000);
+
+    try {
+      const response = await postLogin({
+        username: values.username,
+        password: values.password,
+        lang: values?.lang,
+      });
+      const responsePostLogin: ITFResponsePostLogin = response.data;
+      history.push("home");
+      setCookie("selectedTabs", "home", { path: "/" });
+      setCookie("accessToken", responsePostLogin.accessToken, { path: "/" });
+      setCookie("refreshToken", responsePostLogin.refreshToken, { path: "/" });
+      setCookie("userInfo", jwtDecode(responsePostLogin.accessToken), {
+        path: "/",
+      });
+    } catch (error) {
+      console.log(error);
+    } finally {
+      dispatch(setLoading(false));
+    }
   };
 
   const onFinishFailed = (errorInfo: any) => {

@@ -38,11 +38,11 @@ function App() {
   const { t } = useTranslation();
   const [collapsed, setCollapsed] = useState<boolean>(false);
   const [hiddenExpandSider, setHiddenExpandSider] = useState<boolean>(false);
-  const [cookies] = useCookies(["token"]);
+  const [cookies] = useCookies(["accessToken"]);
   const isLoading = useSelector(commonSelector).loading;
 
-  const isHaveTokenLogin = cookies.token ? true : false;
-  const mockRole = cookies.token;
+  const isHaveTokenLogin = cookies.accessToken ? true : false;
+  const mockRole = cookies.accessToken;
   const pathname = window.location.pathname;
 
   const LoginAdminRoute = ({ component: Component, ...rest }: any) => (

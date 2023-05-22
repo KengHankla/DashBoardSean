@@ -1,5 +1,5 @@
 import join from "url-join";
-import { API_URL } from "constants/common";
+import { apiUrl } from "constants/common";
 
 import axios from "axios";
 import Cookies from "universal-cookie/cjs";
@@ -9,10 +9,10 @@ const isAbsoluteURLRegex = /^(?:\w+:)\/\//;
 
 axios.interceptors.request.use(async (config) => {
   if (!isAbsoluteURLRegex.test(config.url)) {
-    config.url = join(API_URL, config.url);
+    config.url = join(apiUrl, config.url);
   }
   const cookies = new Cookies();
-  const userToken = cookies.get("token");
+  const userToken = cookies.get("accessToken");
   if (userToken) {
     config.headers = { Authorization: `Bearer ${userToken}` };
   }

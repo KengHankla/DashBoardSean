@@ -21,10 +21,10 @@ const SiderLayout = (props: propsITF) => {
   const { t } = useTranslation();
   const { collapsed } = props;
   const history = useHistory();
-  const [cookies] = useCookies(["token", "selectedTabs"]);
+  const [cookies] = useCookies(["accessToken", "selectedTabs"]);
   const [, setCookie] = useCookies(["selectedTabs"]);
 
-  const mockRole = cookies.token;
+  const mockRole = cookies.accessToken;
 
   const onClickMenu = (e: any) => {
     setCookie("selectedTabs", e.key, { path: "/" });

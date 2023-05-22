@@ -1,11 +1,12 @@
 import { httpClient } from "utils/HttpClient";
 import { Cookies } from "react-cookie";
+import { ITFPostLogin } from "types/authencation.types";
 const cookies = new Cookies();
 
-export const getData = async () => {
-  return await httpClient.get("/data");
+export const postLogin = async (data: ITFPostLogin) => {
+  return await httpClient.post("/Login", data);
 };
 export const logout = () => {
-  cookies.remove("token");
+  cookies.remove("accessToken");
   cookies.remove("selectedTabs");
 };
