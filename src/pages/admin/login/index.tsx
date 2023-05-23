@@ -62,7 +62,7 @@ const LoginPage = () => {
 
         <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
           <Button type="primary" htmlType="submit">
-            {t("Login")}
+            {t("Log In")}
           </Button>
         </Form.Item>
       </Form>

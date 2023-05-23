@@ -1,16 +1,16 @@
 {
-  "username": "ชื่อผู้ใช้",
+  "Username": "ชื่อผู้ใช้",
   "Password": "รหัสผ่าน",
-  "Login": "เข้าสู่ระบบ",
-  "Log out": "ออกจากระบบ",
+  "Log In": "เข้าสู่ระบบ",
+  "Log Out": "ออกจากระบบ",
   "Loading": "กำลังโหลด",
 
   "Home Page": "หน้าหลัก",
   "Random Reward": "สุ่มของรางวัล",
   "Claim Reward": "แลกของรางวัล",
-  "User": "จัดการผู้ใช้งาน",
-  "Admin": "จัดการแอดมิน",
-  "Reward Random": "จัดการสิ่่งของในวงล้อ",
+  "User": "ผู้ใช้งาน",
+  "Admin": "แอดมิน",
+  "Reward Random": "สิ่งของในวงล้อ",
   "Reward": "ของรางวัล",
   "Import Data": "นำเข้าข้อมูล",
 
@@ -28,6 +28,18 @@
   "Product name": "ชื่อสินค้า",
   "Percent": "เปอร์เซ็นต์",
   "Total": "ทั้งหมด",
+  "Address": "ที่อยู่",
+  "Line ID": "Line ID",
+  "Phone Number": "เบอร์โทร",
+  "Phone Number Second": "เบอร์โทรสำรอง",
+  "Source": "ที่มา",
+  "Total Point": "แต้มรวม",
+  "Total Deposit": "ฝากรวม",
+  "Total Bonus": "โบนัสรวม",
+  "Total Withdraw": "ถอนรวม",
+  "Deposit Amount": "จำนวนรายการฝาก",
+  "Bonus Amount": "จำนวนรายการโบนัส",
+  "Withdraw Amount": "จำนวนรายการถอน",
 
   "default": "default"
 }

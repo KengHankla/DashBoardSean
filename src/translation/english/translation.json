@@ -1,8 +1,8 @@
 {
-  "username": "Username",
+  "Username": "Username",
   "Password": "Password",
-  "Login": "Login",
-  "Log out": "Log out",
+  "Log In": "Log In",
+  "Log Out": "Log Out",
   "Loading": "Loading",
 
   "Home Page": "Home Page",
@@ -18,7 +18,7 @@
   "Action": "Action",
   "First name": "First name",
   "Last name": "Last name",
-  "Please enter": "Please enter",
+  "Please enter": "Please enter ",
 
   "Add": "Add",
   "Edit": "Edit",
@@ -28,6 +28,18 @@
   "Product name": "Product name",
   "Percent": "Percent",
   "Total": "Total",
+  "Address": "Address",
+  "Line ID": "Line ID",
+  "Phone Number": "Phone Number",
+  "Phone Number Second": "Phone Number Second",
+  "Source": "Source",
+  "Total Point": "Total Point",
+  "Total Deposit": "Total Deposit",
+  "Total Bonus": "Total Bonus",
+  "Total Withdraw": "Total Withdraw",
+  "Deposit Amount": "Deposit Amount",
+  "Bonus Amount": "Bonus Amount",
+  "Withdraw Amount": "Withdraw Amount",
 
   "default": "default"
 }

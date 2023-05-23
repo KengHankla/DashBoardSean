@@ -38,7 +38,7 @@ const HeaderCustomer = () => {
           {showMenu(t("Random Reward"), "random-reward")}
           {showMenu(t("Claim Reward"), "claim-reward")}
         </Row>
-        <Button danger>{t("Log out")}</Button>
+        <Button danger>{t("Log Out")}</Button>
       </Header>
     </Container>
   );

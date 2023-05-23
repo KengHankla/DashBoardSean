@@ -49,6 +49,7 @@ const DrawerCommon = (props: ITFPropsDrawerUser) => {
       open={isOpen}
       maskClosable={false}
       forceRender
+      width={500}
     >
       <Form
         layout="vertical"

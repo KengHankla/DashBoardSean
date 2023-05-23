@@ -17,6 +17,20 @@ export const useUserManagement = (form: FormInstance) => {
       key: "1",
       firstName: "John",
       lastName: "Brown",
+      userName: "JOHNBOWN",
+      password: "1234",
+      address: "2025 M Street, Northwest, Washington, DC, 20036.",
+      lineID: "johnbown1",
+      phoneNumber: "089-23485441",
+      phoneNumberSecond: "088-457831",
+      source: "S.auy",
+      totalPoint: 50,
+      totalDeposit: 900.88,
+      totalBonus: 0,
+      totalWithdraw: 1578,
+      depositAmount: 2,
+      bonusAmount: 0,
+      withdrawAmount: 2,
     },
   ];
 
@@ -38,6 +52,20 @@ export const useUserManagement = (form: FormInstance) => {
     form.setFieldsValue({
       firstName: dataEdit?.firstName,
       lastName: dataEdit?.lastName,
+      userName: dataEdit?.userName,
+      password: dataEdit?.password,
+      address: dataEdit?.address,
+      lineID: dataEdit?.lineID,
+      phoneNumber: dataEdit?.phoneNumber,
+      phoneNumberSecond: dataEdit?.phoneNumberSecond,
+      source: dataEdit?.source,
+      totalPoint: dataEdit?.totalPoint,
+      totalDeposit: dataEdit?.totalDeposit,
+      totalBonus: dataEdit?.totalBonus,
+      totalWithdraw: dataEdit?.totalWithdraw,
+      depositAmount: dataEdit?.depositAmount,
+      bonusAmount: dataEdit?.bonusAmount,
+      withdrawAmount: dataEdit?.withdrawAmount,
     });
   };
 
