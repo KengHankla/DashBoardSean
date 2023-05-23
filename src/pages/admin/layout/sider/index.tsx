@@ -21,33 +21,13 @@ const SiderLayout = (props: propsITF) => {
   const { t } = useTranslation();
   const { collapsed } = props;
   const history = useHistory();
-  const [cookies] = useCookies(["accessToken", "selectedTabs"]);
+  const [cookies] = useCookies(["selectedTabs"]);
   const [, setCookie] = useCookies(["selectedTabs"]);
-
-  const mockRole = cookies.accessToken;
 
   const onClickMenu = (e: any) => {
     setCookie("selectedTabs", e.key, { path: "/" });
     history.push(e.key);
   };
-
-  const menuCustomer = [
-    {
-      key: "home",
-      icon: <HomeOutlined />,
-      label: t("Home Page"),
-    },
-    {
-      key: "random-reward",
-      icon: <LaptopOutlined />,
-      label: t("Random Reward"),
-    },
-    {
-      key: "claim-reward",
-      icon: <GiftOutlined />,
-      label: t("Claim Reward"),
-    },
-  ];
 
   const menuAdmin = [
     {
@@ -102,7 +82,7 @@ const SiderLayout = (props: propsITF) => {
         mode="inline"
         selectedKeys={cookies.selectedTabs}
         onClick={onClickMenu}
-        items={mockRole === "admin" ? menuAdmin : menuCustomer}
+        items={menuAdmin}
       />
     </Sider>
   );

@@ -1,8 +1,8 @@
 import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 import { Layout, Button } from "antd";
 import { Container } from "./styles";
-import { useCookies } from "react-cookie";
 import { useTranslation } from "react-i18next";
+import { useAuthencation } from "hooks/authencation";
 
 const { Header } = Layout;
 
@@ -14,11 +14,7 @@ interface ITFProps {
 const HeaderLayout = (props: ITFProps) => {
   const { t } = useTranslation();
   const { collapsed, setCollapsed, hiddenExpandSider } = props;
-  const [, , removeCookie] = useCookies(["accessToken"]);
-
-  const onClickLogOut = async () => {
-    removeCookie("accessToken");
-  };
+  const { handleLogOut } = useAuthencation();
 
   return (
     <Header
@@ -47,7 +43,7 @@ const HeaderLayout = (props: ITFProps) => {
           />
         )}
 
-        <Button danger onClick={onClickLogOut}>
+        <Button danger onClick={handleLogOut}>
           {t("Log Out")}
         </Button>
       </Container>

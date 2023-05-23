@@ -38,19 +38,20 @@ function App() {
   const { t } = useTranslation();
   const [collapsed, setCollapsed] = useState<boolean>(false);
   const [hiddenExpandSider, setHiddenExpandSider] = useState<boolean>(false);
-  const [cookies] = useCookies(["accessToken"]);
+  const [cookies] = useCookies(["accessToken", "userInfo"]);
   const isLoading = useSelector(commonSelector).loading;
 
-  const isHaveTokenLogin = cookies.accessToken ? true : false;
-  const mockRole = cookies.accessToken;
+  const isHaveTokenLoginAdmin = cookies.accessToken ? true : false;
+  const userNameID = cookies?.userInfo?.nameid;
+
   const pathname = window.location.pathname;
 
   const LoginAdminRoute = ({ component: Component, ...rest }: any) => (
     <Route
       {...rest}
       render={() =>
-        isHaveTokenLogin ? (
-          <Redirect to="/home" />
+        isHaveTokenLoginAdmin ? (
+          <Redirect to="/home111222" />
         ) : (
           <Redirect to="/login-admin" />
         )
@@ -78,7 +79,7 @@ function App() {
             component={rewardRandomPage}
           ></Route>
           <Route exact path="/data" component={dataPage}></Route>
-          <Route exact path="/staff" component={staffPage}></Route>
+          <Route exact path="/admin" component={staffPage}></Route>
           <Route path="*" component={PageNotFound} />
         </Switch>
       </>
@@ -102,7 +103,7 @@ function App() {
         </Layout>
       ) : (
         <Layout style={{ height: "100vh" }}>
-          {isHaveTokenLogin ? (
+          {isHaveTokenLoginAdmin ? (
             <Router>
               <FadeIn>
                 <Layout hasSider>
@@ -120,7 +121,7 @@ function App() {
                         height: "84vh",
                       }}
                     >
-                      {mockRole === "admin" ? routeAdmin() : <></>}
+                      {userNameID === "ADMIN" ? routeAdmin() : <></>}
                     </Content>
                     <FooterLayoutAdmin />
                   </Layout>

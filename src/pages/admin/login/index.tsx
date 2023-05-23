@@ -1,49 +1,15 @@
-import { useCookies } from "react-cookie";
+import { useAuthencation } from "hooks/authencation";
 import { Container } from "./styles";
 import { Input, Form, Button, Select } from "antd";
-import { useHistory } from "react-router-dom";
-import { useAppDispatch } from "store/store";
-import { setLoading } from "store/slice/common";
 import { useTranslation } from "react-i18next";
-import { postLogin } from "api/common/authentication";
-import { ITFPostLogin, ITFResponsePostLogin } from "types/authencation.types";
-import jwtDecode from "jwt-decode";
+import { ITFPostLogin } from "types/authencation.types";
 
 const LoginPage = () => {
-  const history = useHistory();
-  const dispatch = useAppDispatch();
-
-  const [, setCookie] = useCookies([
-    "accessToken",
-    "selectedTabs",
-    "refreshToken",
-    "userInfo",
-  ]);
-
   const { t, i18n } = useTranslation();
+  const { postDataLogin } = useAuthencation();
 
   const onFinish = async (values: ITFPostLogin) => {
-    dispatch(setLoading(true));
-
-    try {
-      const response = await postLogin({
-        username: values.username,
-        password: values.password,
-        lang: values?.lang,
-      });
-      const responsePostLogin: ITFResponsePostLogin = response.data;
-      history.push("home");
-      setCookie("selectedTabs", "home", { path: "/" });
-      setCookie("accessToken", responsePostLogin.accessToken, { path: "/" });
-      setCookie("refreshToken", responsePostLogin.refreshToken, { path: "/" });
-      setCookie("userInfo", jwtDecode(responsePostLogin.accessToken), {
-        path: "/",
-      });
-    } catch (error) {
-      console.log(error);
-    } finally {
-      dispatch(setLoading(false));
-    }
+    postDataLogin(values);
   };
 
   const onFinishFailed = (errorInfo: any) => {

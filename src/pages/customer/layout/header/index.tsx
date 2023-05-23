@@ -19,7 +19,6 @@ const HeaderCustomer = () => {
       <img src={LOGOUFA} alt="Logo" style={{ width: 150, height: 50 }} />
       <Row
         style={{
-          background: "green",
           width: "100%",
           justifyContent: "space-around",
         }}
