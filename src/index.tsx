@@ -9,6 +9,9 @@ import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { store, persistor } from "store/store";
 import "./i18n";
+import { ConfigProvider } from "antd";
+import thTH from "antd/es/locale/th_TH";
+import colorConstants from "./constants/colorConstants";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -18,7 +21,16 @@ root.render(
     <PersistGate persistor={persistor}>
       <React.StrictMode>
         <CookiesProvider>
-          <App />
+          <ConfigProvider
+            locale={thTH}
+            theme={{
+              token: {
+                colorPrimary: colorConstants.Primary500,
+              },
+            }}
+          >
+            <App />
+          </ConfigProvider>
         </CookiesProvider>
       </React.StrictMode>
     </PersistGate>

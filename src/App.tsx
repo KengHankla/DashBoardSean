@@ -31,6 +31,7 @@ import dataPage from "./pages/admin/data";
 import staffPage from "./pages/admin/staff";
 import rewardRandomPage from "./pages/admin/rewardRandom";
 import { useTranslation } from "react-i18next";
+import colorConstants from "./constants/colorConstants";
 
 const { Content } = Layout;
 
@@ -142,7 +143,13 @@ function App() {
               ) : (
                 <Router>
                   <HeaderLayoutCustomer />
-                  <Content>
+                  <Content
+                    style={{
+                      background: colorConstants.Primary50,
+                      padding: 24,
+                      height: "100vh",
+                    }}
+                  >
                     <Switch>
                       <Route exact path="/" component={HomePage}></Route>
                       <Route
