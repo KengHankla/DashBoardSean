@@ -12,7 +12,6 @@ import FadeIn from "react-fade-in";
 
 import SiderLayoutAdmin from "pages/admin/layout/sider";
 import HeaderLayoutAdmin from "pages/admin/layout/header";
-import FooterLayoutAdmin from "pages/admin/layout/footer";
 
 import HeaderLayoutCustomer from "pages/customer/layout/header";
 
@@ -124,7 +123,6 @@ function App() {
                     >
                       {userNameID === "ADMIN" ? routeAdmin() : <></>}
                     </Content>
-                    <FooterLayoutAdmin />
                   </Layout>
                 </Layout>
               </FadeIn>

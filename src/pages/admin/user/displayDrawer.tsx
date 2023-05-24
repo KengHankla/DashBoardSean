@@ -1,10 +1,11 @@
-import { Col, Form, Input, Row } from "antd";
+import { Numeric } from "helper/inputNumber";
+import { Col, Divider, Form, Input, Row } from "antd";
 import TextArea from "antd/es/input/TextArea";
 import { useTranslation } from "react-i18next";
+import PhoneInput from "react-phone-number-input/input";
 
 export const useDisplayDrawer = () => {
   const { t } = useTranslation();
-
   const displayContentDrawerUser = () => {
     return (
       <>
@@ -79,21 +80,6 @@ export const useDisplayDrawer = () => {
           </Form.Item>
         </Col>
 
-        <Col span={24}>
-          <Form.Item
-            label={t("Line ID")}
-            name="lineID"
-            rules={[
-              {
-                required: true,
-                message: t("Please enter") + t("Line ID"),
-              },
-            ]}
-          >
-            <Input />
-          </Form.Item>
-        </Col>
-
         <Row gutter={10}>
           <Col xs={24} sm={24} md={24} lg={12} xl={12}>
             <Form.Item
@@ -125,20 +111,39 @@ export const useDisplayDrawer = () => {
           </Col>
         </Row>
 
-        <Col span={24}>
-          <Form.Item
-            label={t("Source")}
-            name="source"
-            rules={[
-              {
-                required: true,
-                message: t("Please enter") + t("Source"),
-              },
-            ]}
-          >
-            <Input />
-          </Form.Item>
-        </Col>
+        <Row gutter={10}>
+          <Col span={12}>
+            123123123
+            <Form.Item
+              label={`${t("Line ID")} (${t("User")})`}
+              name="lineID"
+              rules={[
+                {
+                  required: true,
+                  message: t("Please enter") + t("Line ID"),
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
+          </Col>
+          <Col span={12}>
+            <Form.Item
+              label={t("Source")}
+              name="source"
+              rules={[
+                {
+                  required: true,
+                  message: t("Please enter") + t("Source"),
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
+          </Col>
+        </Row>
+
+        <Divider />
 
         <Row gutter={10}>
           <Col xs={24} sm={24} md={24} lg={8} xl={8}>
@@ -152,7 +157,7 @@ export const useDisplayDrawer = () => {
                 },
               ]}
             >
-              <Input />
+              <Numeric />
             </Form.Item>
           </Col>
           <Col xs={24} sm={24} md={24} lg={8} xl={8}>
@@ -166,7 +171,7 @@ export const useDisplayDrawer = () => {
                 },
               ]}
             >
-              <Input />
+              <Numeric />
             </Form.Item>
           </Col>
           <Col xs={24} sm={24} md={24} lg={8} xl={8}>
@@ -180,7 +185,7 @@ export const useDisplayDrawer = () => {
                 },
               ]}
             >
-              <Input />
+              <Numeric />
             </Form.Item>
           </Col>
         </Row>
@@ -197,7 +202,7 @@ export const useDisplayDrawer = () => {
                 },
               ]}
             >
-              <Input />
+              <Numeric />
             </Form.Item>
           </Col>
           <Col xs={24} sm={24} md={24} lg={8} xl={8}>
@@ -211,7 +216,7 @@ export const useDisplayDrawer = () => {
                 },
               ]}
             >
-              <Input />
+              <Numeric />
             </Form.Item>
           </Col>
           <Col xs={24} sm={24} md={24} lg={8} xl={8}>
@@ -225,12 +230,12 @@ export const useDisplayDrawer = () => {
                 },
               ]}
             >
-              <Input />
+              <Numeric />
             </Form.Item>
           </Col>
         </Row>
 
-        <Col span={24}>
+        <Col span={8}>
           <Form.Item
             label={t("Total Point")}
             name="totalPoint"
@@ -241,7 +246,7 @@ export const useDisplayDrawer = () => {
               },
             ]}
           >
-            <Input />
+            <Numeric />
           </Form.Item>
         </Col>
       </>

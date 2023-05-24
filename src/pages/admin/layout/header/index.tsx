@@ -43,7 +43,7 @@ const HeaderLayout = (props: ITFProps) => {
           />
         )}
 
-        <Button danger onClick={handleLogOut}>
+        <Button type="primary" danger onClick={handleLogOut}>
           {t("Log Out")}
         </Button>
       </Container>

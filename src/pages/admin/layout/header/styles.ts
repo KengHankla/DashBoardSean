@@ -1,3 +1,4 @@
+import colorConstants from "constants/colorConstants";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -6,6 +7,6 @@ export const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   padding-right: 20px;
-  background: gray;
+  background: ${colorConstants.Primary500};
   height: 100%;
 `;

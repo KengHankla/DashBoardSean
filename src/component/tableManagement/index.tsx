@@ -25,6 +25,7 @@ const TableManagement = (props: ITFPropsTableManagement) => {
       <Table
         columns={columns}
         dataSource={data}
+        scroll={{ x: 1500 }}
         pagination={{
           showSizeChanger: true,
           showTotal: (total, range) =>

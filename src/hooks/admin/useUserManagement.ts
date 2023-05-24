@@ -32,6 +32,25 @@ export const useUserManagement = (form: FormInstance) => {
       bonusAmount: 0,
       withdrawAmount: 2,
     },
+    {
+      key: "2",
+      firstName: "Atom",
+      lastName: "Brown",
+      userName: "JOHNBOWN",
+      password: "1234",
+      address: "2025 M Street, Northwest, Washington, DC, 20036.",
+      lineID: "johnbown1",
+      phoneNumber: "089-23485441",
+      phoneNumberSecond: "088-457831",
+      source: "S.auy",
+      totalPoint: 100,
+      totalDeposit: 900.88,
+      totalBonus: 0,
+      totalWithdraw: 1578,
+      depositAmount: 2,
+      bonusAmount: 0,
+      withdrawAmount: 2,
+    },
   ];
 
   const onOpenDrawer = () => {
