@@ -1,5 +1,5 @@
 export interface ITFPostLogin {
-  username: string;
+  userId: string;
   password: string;
   lang: string;
 }

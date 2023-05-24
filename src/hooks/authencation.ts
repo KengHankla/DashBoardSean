@@ -21,7 +21,7 @@ export const useAuthencation = () => {
     dispatch(setLoading(true));
     try {
       const response = await postLogin({
-        username: values.username,
+        userId: values.userId,
         password: values.password,
         lang: values?.lang,
       });

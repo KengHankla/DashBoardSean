@@ -7,6 +7,12 @@ export const postLogin = async (data: ITFPostLogin) => {
   return await httpClient.post("/Login", data);
 };
 export const logout = () => {
-  cookies.remove("accessToken");
-  cookies.remove("selectedTabs");
+  try {
+    cookies.remove("accessToken");
+    cookies.remove("selectedTabs");
+    window.location.href = "login-admin";
+    return;
+  } catch (error) {
+    window.location.href = "login-admin";
+  }
 };
