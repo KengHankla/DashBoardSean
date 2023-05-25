@@ -8,6 +8,7 @@ import type { ColumnsType } from "antd/es/table";
 import { useDisplayDrawer } from "./displayDrawer";
 import { Form } from "antd";
 import { useTranslation } from "react-i18next";
+import { useEffect } from "react";
 
 const UserPage = () => {
   const [formUserManagement] = Form.useForm();
@@ -23,6 +24,7 @@ const UserPage = () => {
     onFinishUser,
     onFinishFailedUser,
     onClickEdit,
+    getDataUserInfo,
   } = useUserManagement(formUserManagement);
   const { displayContentDrawerUser } = useDisplayDrawer();
 
@@ -180,6 +182,10 @@ const UserPage = () => {
       fixed: "right",
     },
   ];
+
+  useEffect(() => {
+    getDataUserInfo();
+  }, [getDataUserInfo]);
 
   return (
     <>

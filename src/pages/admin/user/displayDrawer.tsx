@@ -2,7 +2,6 @@ import { Numeric } from "helper/inputNumber";
 import { Col, Divider, Form, Input, Row } from "antd";
 import TextArea from "antd/es/input/TextArea";
 import { useTranslation } from "react-i18next";
-import PhoneInput from "react-phone-number-input/input";
 
 export const useDisplayDrawer = () => {
   const { t } = useTranslation();
@@ -113,7 +112,6 @@ export const useDisplayDrawer = () => {
 
         <Row gutter={10}>
           <Col span={12}>
-            123123123
             <Form.Item
               label={`${t("Line ID")} (${t("User")})`}
               name="lineID"

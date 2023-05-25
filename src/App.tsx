@@ -86,6 +86,8 @@ function App() {
     );
   };
 
+  console.log(userNameID);
+
   return (
     <>
       {isLoading ? (
@@ -121,7 +123,7 @@ function App() {
                         height: "84vh",
                       }}
                     >
-                      {userNameID === "ADMIN" ? routeAdmin() : <></>}
+                      {userNameID === "NAPAT.CHI" ? routeAdmin() : <></>}
                     </Content>
                   </Layout>
                 </Layout>

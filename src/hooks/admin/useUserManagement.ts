@@ -1,7 +1,8 @@
 import { ITFDataTableUser, ITFOnFinishUser } from "types/management.types";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { FormInstance } from "antd";
 import { useTranslation } from "react-i18next";
+import { getUserInfo } from "api/user/user";
 
 export const useUserManagement = (form: FormInstance) => {
   const { t } = useTranslation();
@@ -11,47 +12,9 @@ export const useUserManagement = (form: FormInstance) => {
   const [dataEdit, setDataEdit] = useState<ITFDataTableUser | undefined>(
     undefined
   );
-
-  const dataUserManagement: ITFDataTableUser[] = [
-    {
-      key: "1",
-      firstName: "John",
-      lastName: "Brown",
-      userName: "JOHNBOWN",
-      password: "1234",
-      address: "2025 M Street, Northwest, Washington, DC, 20036.",
-      lineID: "johnbown1",
-      phoneNumber: "089-23485441",
-      phoneNumberSecond: "088-457831",
-      source: "S.auy",
-      totalPoint: 50,
-      totalDeposit: 900.88,
-      totalBonus: 0,
-      totalWithdraw: 1578,
-      depositAmount: 2,
-      bonusAmount: 0,
-      withdrawAmount: 2,
-    },
-    {
-      key: "2",
-      firstName: "Atom",
-      lastName: "Brown",
-      userName: "JOHNBOWN",
-      password: "1234",
-      address: "2025 M Street, Northwest, Washington, DC, 20036.",
-      lineID: "johnbown1",
-      phoneNumber: "089-23485441",
-      phoneNumberSecond: "088-457831",
-      source: "S.auy",
-      totalPoint: 100,
-      totalDeposit: 900.88,
-      totalBonus: 0,
-      totalWithdraw: 1578,
-      depositAmount: 2,
-      bonusAmount: 0,
-      withdrawAmount: 2,
-    },
-  ];
+  const [dataUserManagement, setDataUserManagement] = useState<
+    ITFDataTableUser[]
+  >([]);
 
   const onOpenDrawer = () => {
     setIsOperDrawer(true);
@@ -96,6 +59,15 @@ export const useUserManagement = (form: FormInstance) => {
     console.log("Failed:", errorInfo);
   };
 
+  const getDataUserInfo = useCallback(async () => {
+    try {
+      const response = await getUserInfo();
+      setDataUserManagement(response.data);
+    } catch (error) {
+    } finally {
+    }
+  }, []);
+
   return {
     title,
     dataUserManagement,
@@ -107,5 +79,6 @@ export const useUserManagement = (form: FormInstance) => {
     handleSetFieldsEditUser,
     onFinishUser,
     onFinishFailedUser,
+    getDataUserInfo,
   };
 };
