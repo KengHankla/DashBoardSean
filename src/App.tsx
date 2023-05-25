@@ -86,8 +86,6 @@ function App() {
     );
   };
 
-  console.log(userNameID);
-
   return (
     <>
       {isLoading ? (

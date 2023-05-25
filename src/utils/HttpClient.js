@@ -3,7 +3,7 @@ import { apiUrl } from "constants/common";
 
 import axios from "axios";
 import Cookies from "universal-cookie/cjs";
-import { logout } from "api/common/authentication";
+import { RefreshNewToken } from "api/common/authentication";
 
 const isAbsoluteURLRegex = /^(?:\w+:)\/\//;
 
@@ -25,9 +25,12 @@ axios.interceptors.response.use(
     return response;
   },
   async (error) => {
-    if (error.response.status === 401) {
-      logout();
-      return axios.request(error.config);
+    const originalRequest = error.config;
+    if (error.response.status === 401 && !originalRequest._retry) {
+      originalRequest._retry = true;
+      const access_token = await RefreshNewToken();
+      axios.defaults.headers.common["Authorization"] = "Bearer " + access_token;
+      return axios(originalRequest);
     }
     return Promise.reject(error);
   }

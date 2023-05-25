@@ -10,7 +10,7 @@ export const useAuthencation = () => {
   const history = useHistory();
   const dispatch = useAppDispatch();
 
-  const [, setCookie, removeCookie] = useCookies([
+  const [, setCookie] = useCookies([
     "accessToken",
     "selectedTabs",
     "refreshToken",
@@ -40,13 +40,5 @@ export const useAuthencation = () => {
     }
   };
 
-  const handleLogOut = () => {
-    history.push("/login-admin");
-    removeCookie("selectedTabs");
-    removeCookie("accessToken");
-    removeCookie("refreshToken");
-    removeCookie("userInfo");
-  };
-
-  return { postDataLogin, handleLogOut };
+  return { postDataLogin };
 };

@@ -2,7 +2,7 @@ import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 import { Layout, Button } from "antd";
 import { Container } from "./styles";
 import { useTranslation } from "react-i18next";
-import { useAuthencation } from "hooks/authencation";
+import { logout } from "api/common/authentication";
 
 const { Header } = Layout;
 
@@ -14,7 +14,6 @@ interface ITFProps {
 const HeaderLayout = (props: ITFProps) => {
   const { t } = useTranslation();
   const { collapsed, setCollapsed, hiddenExpandSider } = props;
-  const { handleLogOut } = useAuthencation();
 
   return (
     <Header
@@ -43,7 +42,7 @@ const HeaderLayout = (props: ITFProps) => {
           />
         )}
 
-        <Button type="primary" danger onClick={handleLogOut}>
+        <Button type="primary" danger onClick={() => logout()}>
           {t("Log Out")}
         </Button>
       </Container>
