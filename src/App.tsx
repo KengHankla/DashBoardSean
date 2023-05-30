@@ -31,6 +31,7 @@ import staffPage from "./pages/admin/staff";
 import rewardRandomPage from "./pages/admin/rewardRandom";
 import { useTranslation } from "react-i18next";
 import colorConstants from "./constants/colorConstants";
+import { TYPE_ROLE } from "./constants";
 
 const { Content } = Layout;
 
@@ -40,9 +41,9 @@ function App() {
   const [hiddenExpandSider, setHiddenExpandSider] = useState<boolean>(false);
   const [cookies] = useCookies(["accessToken", "userInfo"]);
   const isLoading = useSelector(commonSelector).loading;
+  const userRole = useSelector(commonSelector).dataUser?.role || "";
 
   const isHaveTokenLoginAdmin = cookies.accessToken ? true : false;
-  const userNameID = cookies?.userInfo?.nameid;
 
   const pathname = window.location.pathname;
 
@@ -121,7 +122,15 @@ function App() {
                         height: "84vh",
                       }}
                     >
-                      {userNameID === "NAPAT.CHI" ? routeAdmin() : <></>}
+                      {[
+                        TYPE_ROLE.SUPER_ADMIN,
+                        TYPE_ROLE.ADMIN,
+                        TYPE_ROLE.STAFF,
+                      ].includes(userRole) ? (
+                        routeAdmin()
+                      ) : (
+                        <></>
+                      )}
                     </Content>
                   </Layout>
                 </Layout>

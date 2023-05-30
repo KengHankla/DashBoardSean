@@ -16,6 +16,7 @@ export interface ITFDataTableUser {
   depositAmount: number;
   bonusAmount: number;
   withDrawAmount: number;
+  role: string;
 }
 
 export interface ITFOnFinishUser {
