@@ -2,10 +2,10 @@ export interface ITFDataTableUser {
   key: string;
   firstName: string;
   lastName: string;
-  userName: string;
+  userId: string;
   password: string;
   address: string;
-  lineID: string;
+  lineId: string;
   phoneNumber: string;
   phoneNumberSecond: string;
   source: string;
@@ -15,7 +15,7 @@ export interface ITFDataTableUser {
   totalWithdraw: number;
   depositAmount: number;
   bonusAmount: number;
-  withdrawAmount: number;
+  withDrawAmount: number;
 }
 
 export interface ITFOnFinishUser {

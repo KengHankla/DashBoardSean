@@ -56,6 +56,7 @@ const DrawerCommon = (props: ITFPropsDrawerUser) => {
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
         form={form}
+        scrollToFirstError
       >
         {displayContent}
         <Row style={{ justifyContent: "flex-end", gap: "8px" }}>

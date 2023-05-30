@@ -52,10 +52,10 @@ const UserPage = () => {
     },
     {
       title: t("Username"),
-      key: "userName",
-      dataIndex: "userName",
+      key: "userId",
+      dataIndex: "userId",
       sorter: (a: ITFDataTableUser, b: ITFDataTableUser) =>
-        sorterString(a.userName, b.userName),
+        sorterString(a.userId, b.userId),
       width: 150,
     },
 
@@ -78,10 +78,10 @@ const UserPage = () => {
     },
     {
       title: t("Line ID"),
-      key: "lineID",
-      dataIndex: "lineID",
+      key: "lineId",
+      dataIndex: "lineId",
       sorter: (a: ITFDataTableUser, b: ITFDataTableUser) =>
-        sorterString(a.lineID, b.lineID),
+        sorterString(a.lineId, b.lineId),
       width: 150,
     },
     {
@@ -158,10 +158,10 @@ const UserPage = () => {
     },
     {
       title: t("Withdraw Amount"),
-      key: "withdrawAmount",
-      dataIndex: "withdrawAmount",
+      key: "withDrawAmount",
+      dataIndex: "withDrawAmount",
       sorter: (a: ITFDataTableUser, b: ITFDataTableUser) =>
-        sorterNumber(a.withdrawAmount, b.withdrawAmount),
+        sorterNumber(a.withDrawAmount, b.withDrawAmount),
       width: 100,
     },
     {

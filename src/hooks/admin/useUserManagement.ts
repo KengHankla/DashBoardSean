@@ -1,8 +1,8 @@
-import { ITFDataTableUser, ITFOnFinishUser } from "types/management.types";
+import { ITFDataTableUser } from "types/management.types";
 import { useCallback, useState } from "react";
 import { FormInstance } from "antd";
 import { useTranslation } from "react-i18next";
-import { getUserInfo } from "api/user/user";
+import { getUserInfo, putUserInfo } from "api/user/user";
 
 export const useUserManagement = (form: FormInstance) => {
   const { t } = useTranslation();
@@ -34,10 +34,10 @@ export const useUserManagement = (form: FormInstance) => {
     form.setFieldsValue({
       firstName: dataEdit?.firstName,
       lastName: dataEdit?.lastName,
-      userName: dataEdit?.userName,
+      userId: dataEdit?.userId,
       password: dataEdit?.password,
       address: dataEdit?.address,
-      lineID: dataEdit?.lineID,
+      lineId: dataEdit?.lineId,
       phoneNumber: dataEdit?.phoneNumber,
       phoneNumberSecond: dataEdit?.phoneNumberSecond,
       source: dataEdit?.source,
@@ -47,12 +47,17 @@ export const useUserManagement = (form: FormInstance) => {
       totalWithdraw: dataEdit?.totalWithdraw,
       depositAmount: dataEdit?.depositAmount,
       bonusAmount: dataEdit?.bonusAmount,
-      withdrawAmount: dataEdit?.withdrawAmount,
+      withDrawAmount: dataEdit?.withDrawAmount,
     });
   };
 
-  const onFinishUser = (value: ITFOnFinishUser) => {
-    console.log(value);
+  const onFinishUser = async (value: ITFDataTableUser) => {
+    try {
+      const response = await putUserInfo(value);
+      console.log(response);
+    } catch (error) {
+    } finally {
+    }
   };
 
   const onFinishFailedUser = (errorInfo: any) => {

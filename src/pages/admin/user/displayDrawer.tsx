@@ -40,7 +40,7 @@ export const useDisplayDrawer = () => {
           <Col xs={24} sm={24} md={24} lg={12} xl={12}>
             <Form.Item
               label={t("Username")}
-              name="userName"
+              name="userId"
               rules={[
                 {
                   required: true,
@@ -114,7 +114,7 @@ export const useDisplayDrawer = () => {
           <Col span={12}>
             <Form.Item
               label={`${t("Line ID")} (${t("User")})`}
-              name="lineID"
+              name="lineId"
               rules={[
                 {
                   required: true,
@@ -220,7 +220,7 @@ export const useDisplayDrawer = () => {
           <Col xs={24} sm={24} md={24} lg={8} xl={8}>
             <Form.Item
               label={t("Withdraw Amount")}
-              name="withdrawAmount"
+              name="withDrawAmount"
               rules={[
                 {
                   required: true,
