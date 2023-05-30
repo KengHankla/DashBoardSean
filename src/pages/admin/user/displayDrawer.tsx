@@ -59,7 +59,7 @@ export const useDisplayDrawer = () => {
                 { required: true, message: t("Please enter") + t("Password") },
               ]}
             >
-              <Input />
+              <Input.Password />
             </Form.Item>
           </Col>
         </Row>
