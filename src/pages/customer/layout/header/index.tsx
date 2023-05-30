@@ -1,10 +1,12 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import { LOGOUFA } from "constants/index";
 import { Header } from "antd/es/layout/layout";
-import { Button, Row } from "antd";
+import { Avatar, Button, Col, Popover, Row } from "antd";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Container } from "./styles";
-
+import { UserOutlined } from "@ant-design/icons";
+import colorConstants from "constants/colorConstants";
 const HeaderCustomer = () => {
   const { t } = useTranslation();
 
@@ -17,6 +19,18 @@ const HeaderCustomer = () => {
       </Link>
     );
   };
+  const content = (
+    <div
+      style={{ alignItems: "center", display: "flex", flexDirection: "column" }}
+    >
+      <div>
+        <a>View Profile</a>
+      </div>
+      <Button danger style={{ marginTop: "10px" }}>
+        {t("Log Out")}
+      </Button>
+    </div>
+  );
   return (
     <Container>
       <Header
@@ -38,7 +52,27 @@ const HeaderCustomer = () => {
           {showMenu(t("Random Reward"), "random-reward")}
           {showMenu(t("Claim Reward"), "claim-reward")}
         </Row>
-        <Button danger>{t("Log Out")}</Button>
+
+        <Col
+          style={{
+            color: colorConstants.BaseGray,
+            width: "120px",
+          }}
+        >
+          <div style={{ height: "20px" }}>Hankla Thosa</div>
+          <div>100 point</div>
+        </Col>
+        <Popover placement="bottomRight" content={content} trigger="click">
+          <Avatar
+            style={{
+              backgroundColor: colorConstants.Primary500,
+              verticalAlign: "middle",
+            }}
+            size="large"
+            gap={4}
+            icon={<UserOutlined />}
+          ></Avatar>
+        </Popover>
       </Header>
     </Container>
   );
