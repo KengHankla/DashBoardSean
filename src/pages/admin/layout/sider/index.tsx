@@ -29,9 +29,9 @@ const SiderLayout = (props: propsITF) => {
   const { collapsed } = props;
   const history = useHistory();
   const [cookies, setCookie] = useCookies(["selectedTabs", "userInfo"]);
-  const [dataUserRole, setDataUserRole] = useState<string | undefined>(
-    undefined
-  );
+  const [dataUserRole, setDataUserRole] = useState<
+    ITFDataTableUser | undefined
+  >(undefined);
   const dispatch = useAppDispatch();
 
   const onClickMenu = (e: any) => {
@@ -39,92 +39,75 @@ const SiderLayout = (props: propsITF) => {
     history.push(e.key);
   };
 
+  const homeSider = {
+    key: "home",
+    icon: <HomeOutlined />,
+    label: t("Home Page"),
+  };
+  const adminSider = {
+    key: "admin",
+    icon: <IdcardOutlined />,
+    label: t("Admin"),
+  };
+  const staffSider = {
+    key: "staff",
+    icon: <IdcardOutlined />,
+    label: t("Staff"),
+  };
+  const userSider = {
+    key: "user",
+    icon: <UserOutlined />,
+    label: t("User"),
+  };
+  const randomRewardSider = {
+    key: "reward-random",
+    icon: <LaptopOutlined />,
+    label: t("Reward Random"),
+  };
+  const rewardSider = {
+    key: "reward",
+    icon: <GiftOutlined />,
+    label: t("Reward"),
+  };
+  const dataSider = {
+    key: "data",
+    icon: <DatabaseOutlined />,
+    label: t("Import Data"),
+  };
+
   const menuSuperAdmin = [
-    {
-      key: "home",
-      icon: <HomeOutlined />,
-      label: t("Home Page"),
-    },
-    {
-      key: "user",
-      icon: <UserOutlined />,
-      label: t("User"),
-    },
-    {
-      key: "admin",
-      icon: <IdcardOutlined />,
-      label: t("Admin"),
-    },
-    {
-      key: "reward-random",
-      icon: <LaptopOutlined />,
-      label: t("Reward Random"),
-    },
-    {
-      key: "reward",
-      icon: <GiftOutlined />,
-      label: t("Reward"),
-    },
-    {
-      key: "data",
-      icon: <DatabaseOutlined />,
-      label: t("Import Data"),
-    },
+    homeSider,
+    adminSider,
+    staffSider,
+    userSider,
+    randomRewardSider,
+    rewardSider,
+    dataSider,
   ];
 
   const menuAdmin = [
-    {
-      key: "home",
-      icon: <HomeOutlined />,
-      label: t("Home Page"),
-    },
-    {
-      key: "user",
-      icon: <UserOutlined />,
-      label: t("User"),
-    },
-    {
-      key: "reward-random",
-      icon: <LaptopOutlined />,
-      label: t("Reward Random"),
-    },
-    {
-      key: "reward",
-      icon: <GiftOutlined />,
-      label: t("Reward"),
-    },
-    {
-      key: "data",
-      icon: <DatabaseOutlined />,
-      label: t("Import Data"),
-    },
+    homeSider,
+    staffSider,
+    userSider,
+    randomRewardSider,
+    rewardSider,
+    dataSider,
   ];
 
   const menuStaff = [
-    {
-      key: "home",
-      icon: <HomeOutlined />,
-      label: t("Home Page"),
-    },
-    {
-      key: "user",
-      icon: <UserOutlined />,
-      label: t("User"),
-    },
-    {
-      key: "data",
-      icon: <DatabaseOutlined />,
-      label: t("Import Data"),
-    },
+    homeSider,
+    userSider,
+    randomRewardSider,
+    rewardSider,
+    dataSider,
   ];
 
   const getDataUserInfoByUserId = useCallback(async () => {
     try {
       const response = await getUserInfoByUserId(cookies.userInfo.nameid);
-      const data: string = get(response, "data[0].role", undefined);
-      const dataUs: ITFDataTableUser = get(response, "data[0]", undefined);
+      const data: ITFDataTableUser = get(response, "data[0]", undefined);
       setDataUserRole(data);
-      dispatch(setDataUser(dataUs));
+      dispatch(setDataUser(data));
     } catch (error) {
     } finally {
     }
@@ -135,9 +118,9 @@ const SiderLayout = (props: propsITF) => {
   }, [getDataUserInfoByUserId]);
 
   const handleShowMenu = () => {
-    if (dataUserRole === TYPE_ROLE.SUPER_ADMIN) {
+    if (dataUserRole?.role === TYPE_ROLE.SUPER_ADMIN) {
       return menuSuperAdmin;
-    } else if (dataUserRole === TYPE_ROLE.ADMIN) {
+    } else if (dataUserRole?.role === TYPE_ROLE.ADMIN) {
       return menuAdmin;
     }
     return menuStaff;

@@ -27,6 +27,7 @@ import homeAdminPage from "./pages/admin/home";
 import userPage from "./pages/admin/user";
 import rewardPage from "./pages/admin/reward";
 import dataPage from "./pages/admin/data";
+import adminPage from "./pages/admin/admin";
 import staffPage from "./pages/admin/staff";
 import rewardRandomPage from "./pages/admin/rewardRandom";
 import { useTranslation } from "react-i18next";
@@ -68,20 +69,63 @@ function App() {
   }, []);
 
   const routeAdmin = () => {
+    const RouteAdmin = (
+      <Route exact path="/admin" component={adminPage}></Route>
+    );
+    const RouteUser = <Route exact path="/user" component={userPage}></Route>;
+    const RouteStaff = (
+      <Route exact path="/staff" component={staffPage}></Route>
+    );
+    const RouteHome = (
+      <Route exact path="/home" component={homeAdminPage}></Route>
+    );
+    const RouteData = <Route exact path="/data" component={dataPage}></Route>;
+    const RouteReward = (
+      <Route exact path="/reward" component={rewardPage}></Route>
+    );
+    const RouteRandomReward = (
+      <Route exact path="/reward-random" component={rewardRandomPage}></Route>
+    );
+    const RoutePageNotFound = <Route path="*" component={PageNotFound} />;
+    if (userRole === TYPE_ROLE.SUPER_ADMIN) {
+      return (
+        <>
+          <Switch>
+            {RouteHome}
+            {RouteData}
+            {RouteReward}
+            {RouteRandomReward}
+            {RouteAdmin}
+            {RouteStaff}
+            {RouteUser}
+            {RoutePageNotFound}
+          </Switch>
+        </>
+      );
+    } else if (userRole === TYPE_ROLE.ADMIN) {
+      return (
+        <>
+          <Switch>
+            {RouteHome}
+            {RouteData}
+            {RouteReward}
+            {RouteRandomReward}
+            {RouteStaff}
+            {RouteUser}
+            {RoutePageNotFound}
+          </Switch>
+        </>
+      );
+    }
     return (
       <>
         <Switch>
-          <Route exact path="/home" component={homeAdminPage}></Route>
-          <Route exact path="/user" component={userPage}></Route>
-          <Route exact path="/reward" component={rewardPage}></Route>
-          <Route
-            exact
-            path="/reward-random"
-            component={rewardRandomPage}
-          ></Route>
-          <Route exact path="/data" component={dataPage}></Route>
-          <Route exact path="/admin" component={staffPage}></Route>
-          <Route path="*" component={PageNotFound} />
+          {RouteHome}
+          {RouteData}
+          {RouteReward}
+          {RouteRandomReward}
+          {RouteUser}
+          {RoutePageNotFound}
         </Switch>
       </>
     );
